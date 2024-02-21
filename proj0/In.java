@@ -35,7 +35,7 @@ import java.util.regex.Pattern;
  *  <p>
  *  Like {@link Scanner}, reading a token also consumes preceding Java
  *  whitespace, reading a full line consumes
- *  the following end-of-line delimeter, while reading a character consumes
+ *  the following end-of-line delimiter, while reading a character consumes
  *  nothing extra. 
  *  <p>
  *  Whitespace is defined in {@link Character#isWhitespace(char)}. Newlines
@@ -177,7 +177,7 @@ public final class In {
     public boolean exists()  {
         return scanner != null;
     }
-    
+
     /*** begin: section (2 of 2) of code duplicated from In to StdIn,
       *  with all methods changed from "public" to "public static" ***/
 

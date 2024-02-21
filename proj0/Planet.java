@@ -1,3 +1,5 @@
+import examples.StdDraw;
+
 public class Planet {
     public double xxPos;
     public double yyPos;
@@ -109,5 +111,12 @@ public class Planet {
         yyVel += dt * accelerationY;
         xxPos += dt * xxVel;
         yyPos += dt * yyVel;
+    }
+
+    /**
+     * Draw the Planet’s image at its position.
+     */
+    public void draw() {
+        StdDraw.picture(xxPos, yyPos, "images/"+imgFileName);
     }
 }
