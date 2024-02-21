@@ -1,5 +1,3 @@
-import examples.StdDraw;
-
 public class NBody {
     public static double readRadius(String filename) {
         In infile = new In(filename);
