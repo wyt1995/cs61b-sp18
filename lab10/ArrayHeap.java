@@ -109,7 +109,7 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
             int parentIndex = parentIndex(index);
             int minIndex = min(index, parentIndex);
             if (index != minIndex) {
-                break;
+                return;
             }
             swap(index, parentIndex);
             index = parentIndex;
@@ -127,7 +127,7 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
             int minChild = min(leftIndex(index), rightIndex(index));
             int minIndex = min(index, minChild);
             if (index == minIndex) {
-                break;
+                return;
             }
             swap(index, minChild);
             index = minChild;
@@ -156,6 +156,9 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
      */
     @Override
     public T peek() {
+        if (size == 0) {
+            throw new NoSuchElementException("Queue is empty");
+        }
         return contents[1].item();
     }
 
@@ -207,7 +210,7 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
             throw new NoSuchElementException("No item in queue.");
         }
         double oldPriority = contents[index].priority();
-        contents[index].myPriority = priority;
+        contents[index] = new Node(item, priority);
         if (priority < oldPriority) {
             swim(index);
         } else {
