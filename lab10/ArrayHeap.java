@@ -123,14 +123,11 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
         // Throws an exception if index is invalid. DON'T CHANGE THIS LINE.
         validateSinkSwimArg(index);
 
-        while (index < size) {
-            int minChild = min(leftIndex(index), rightIndex(index));
-            int minIndex = min(index, minChild);
-            if (minChild > size || index == minIndex) {
-                return;
-            }
+        int minChild = min(leftIndex(index), rightIndex(index));
+        int minIndex = min(index, minChild);
+        if (index != minIndex) {
             swap(index, minChild);
-            index = minChild;
+            sink(minChild);
         }
     }
 
