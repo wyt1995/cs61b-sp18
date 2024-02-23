@@ -113,6 +113,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
         int index = hash(key);
         V valueInMap = buckets[index].get(key);
         if (valueInMap != null) {
+            buckets[index].remove(key);
             size -= 1;
         }
         return valueInMap;
