@@ -126,7 +126,7 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
         while (index < size) {
             int minChild = min(leftIndex(index), rightIndex(index));
             int minIndex = min(index, minChild);
-            if (index == minIndex) {
+            if (minChild > size || index == minIndex) {
                 return;
             }
             swap(index, minChild);
@@ -447,5 +447,4 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
             i += 1;
         }
     }
-
 }
