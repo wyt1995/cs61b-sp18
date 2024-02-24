@@ -136,6 +136,9 @@ public class ArrayDeque<T> {
      * If no such item exists, returns null.
      */
     public T removeFirst() {
+        if (arraySize > startSize && loadFactor() < 0.25) {
+            resize(size / 2);
+        }
         if (size == 0) {
             return null;
         }
@@ -143,9 +146,6 @@ public class ArrayDeque<T> {
         items[firstIndex] = null;
         size -= 1;
         firstIndex = nextIndex(firstIndex);
-        if (arraySize > startSize && loadFactor() < 0.25) {
-            resize(size / 2);
-        }
         return firstItem;
     }
 
@@ -154,6 +154,9 @@ public class ArrayDeque<T> {
      * If no such item exists, returns null.
      */
     public T removeLast() {
+        if (arraySize > startSize && loadFactor() < 0.25) {
+            resize(size / 2);
+        }
         if (size == 0) {
             return null;
         }
@@ -161,9 +164,6 @@ public class ArrayDeque<T> {
         T lastItem = items[lastIndex];
         items[lastIndex] = null;
         size -= 1;
-        if (arraySize > startSize && loadFactor() < 0.25) {
-            resize(size / 2);
-        }
         return lastItem;
     }
 
