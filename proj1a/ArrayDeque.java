@@ -60,8 +60,9 @@ public class ArrayDeque<T> {
         return arrayIndex(size - 1);
     }
 
-    private double loadFactor() {
-        return (double) size / arraySize;
+    private boolean belowLoadFactor() {
+        double loadFactor = 0.25;
+        return size < loadFactor * arraySize;
     }
 
     private void resize(int capacity) {
@@ -136,8 +137,8 @@ public class ArrayDeque<T> {
      * If no such item exists, returns null.
      */
     public T removeFirst() {
-        if (arraySize > startSize && loadFactor() < 0.25) {
-            resize(size / 2);
+        if (arraySize > startSize && belowLoadFactor()) {
+            resize(arraySize / 2);
         }
         if (size == 0) {
             return null;
@@ -154,8 +155,8 @@ public class ArrayDeque<T> {
      * If no such item exists, returns null.
      */
     public T removeLast() {
-        if (arraySize > startSize && loadFactor() < 0.25) {
-            resize(size / 2);
+        if (arraySize > startSize && belowLoadFactor()) {
+            resize(arraySize / 2);
         }
         if (size == 0) {
             return null;
