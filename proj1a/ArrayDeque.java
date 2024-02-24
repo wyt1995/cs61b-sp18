@@ -143,7 +143,7 @@ public class ArrayDeque<T> {
         items[firstIndex] = null;
         size -= 1;
         firstIndex = nextIndex(firstIndex);
-        if (size > startSize && loadFactor() < 0.25) {
+        if (arraySize > startSize && loadFactor() < 0.25) {
             resize(size / 2);
         }
         return firstItem;
@@ -161,7 +161,7 @@ public class ArrayDeque<T> {
         T lastItem = items[lastIndex];
         items[lastIndex] = null;
         size -= 1;
-        if (size > startSize && loadFactor() < 0.25) {
+        if (arraySize > startSize && loadFactor() < 0.25) {
             resize(size / 2);
         }
         return lastItem;
