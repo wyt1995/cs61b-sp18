@@ -30,13 +30,13 @@ public class TestArrayDequeGold {
                     errorMsg.append(String.format("addLast(%s)\n", randomNumber));
                     assertEquals(errorMsg.toString(), expected.size(), student.size());
                 } else if (randomOperation == 4 && !(student.isEmpty()) && !(expected.isEmpty())) {
-                    Integer studentItem = student.removeFirst();
-                    Integer expectedItem = expected.removeFirst();
+                    int studentItem = student.removeFirst();
+                    int expectedItem = expected.removeFirst();
                     errorMsg.append("removeFirst()\n");
                     assertEquals(errorMsg.toString(), expectedItem, studentItem);
                 } else if (randomOperation == 5 && !(student.isEmpty()) && !(expected.isEmpty())) {
-                    Integer studentItem = student.removeLast();
-                    Integer expectedItem = expected.removeLast();
+                    int studentItem = student.removeLast();
+                    int expectedItem = expected.removeLast();
                     errorMsg.append("removeLast()\n");
                     assertEquals(errorMsg.toString(), expectedItem, studentItem);
                 }
