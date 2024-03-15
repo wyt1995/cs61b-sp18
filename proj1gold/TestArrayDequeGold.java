@@ -1,8 +1,6 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import edu.princeton.cs.algs4.StdRandom;
-
 public class TestArrayDequeGold {
 
     @Test
@@ -10,7 +8,7 @@ public class TestArrayDequeGold {
         StudentArrayDeque<Integer> student = new StudentArrayDeque<>();
         ArrayDequeSolution<Integer> expected = new ArrayDequeSolution<>();
 
-        int total = 500;
+        int total = 1000;
         for (int i = 0; i < total; i++) {
             StringBuilder errorMsg = new StringBuilder();
             errorMsg.append("\n");
@@ -29,14 +27,14 @@ public class TestArrayDequeGold {
                     expected.addLast(randomNumber);
                     errorMsg.append(String.format("addLast(%s)\n", randomNumber));
                     assertEquals(errorMsg.toString(), expected.size(), student.size());
-                } else if (randomOperation == 4 && !(student.isEmpty()) && !(expected.isEmpty())) {
-                    int studentItem = student.removeFirst();
-                    int expectedItem = expected.removeFirst();
+                } else if (randomOperation == 4 && !student.isEmpty() && !expected.isEmpty()) {
+                    Integer studentItem = student.removeFirst();
+                    Integer expectedItem = expected.removeFirst();
                     errorMsg.append("removeFirst()\n");
                     assertEquals(errorMsg.toString(), expectedItem, studentItem);
-                } else if (randomOperation == 5 && !(student.isEmpty()) && !(expected.isEmpty())) {
-                    int studentItem = student.removeLast();
-                    int expectedItem = expected.removeLast();
+                } else if (randomOperation == 5 && !student.isEmpty() && !expected.isEmpty()) {
+                    Integer studentItem = student.removeLast();
+                    Integer expectedItem = expected.removeLast();
                     errorMsg.append("removeLast()\n");
                     assertEquals(errorMsg.toString(), expectedItem, studentItem);
                 }
