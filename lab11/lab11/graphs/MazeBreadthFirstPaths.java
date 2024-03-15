@@ -36,12 +36,6 @@ public class MazeBreadthFirstPaths extends MazeExplorer {
         while (!fringe.isEmpty()) {
             int relaxed = fringe.remove();
             for (int v : maze.adj(relaxed)) {
-                // stop iteration as long as target is found
-                if (v == target) {
-                    targetFound = true;
-                    return;
-                }
-
                 // update distTo, edgeTo, and marked for every unvisited vertex
                 if (!marked[v]) {
                     edgeTo[v] = relaxed;
@@ -49,6 +43,12 @@ public class MazeBreadthFirstPaths extends MazeExplorer {
                     announce();
                     marked[v] = true;
                     fringe.add(v);
+                }
+
+                // stop iteration as long as target is found
+                if (v == target) {
+                    targetFound = true;
+                    return;
                 }
             }
         }
