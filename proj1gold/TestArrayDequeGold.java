@@ -15,14 +15,13 @@ public class TestArrayDequeGold {
 
             for (int j = 0; j < 10; j++) {
                 int randomOperation = StdRandom.uniform(0, 6);
+                int randomNumber = StdRandom.uniform(0, 1000);
                 if (randomOperation < 2) {
-                    int randomNumber = StdRandom.uniform(0, 1000);
                     student.addFirst(randomNumber);
                     expected.addFirst(randomNumber);
                     errorMsg.append(String.format("addFirst(%s)\n", randomNumber));
                     assertEquals(errorMsg.toString(), expected.size(), student.size());
                 } else if (randomOperation < 4) {
-                    int randomNumber = StdRandom.uniform(0, 1000);
                     student.addLast(randomNumber);
                     expected.addLast(randomNumber);
                     errorMsg.append(String.format("addLast(%s)\n", randomNumber));
