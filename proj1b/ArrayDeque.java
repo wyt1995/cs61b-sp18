@@ -81,6 +81,7 @@ public class ArrayDeque<T> implements Deque<T> {
      * Add an item to the front of the deque.
      * @param item generic item of type T.
      */
+    @Override
     public void addFirst(T item) {
         if (size == arraySize) {
             resize(size * 2);
@@ -95,6 +96,7 @@ public class ArrayDeque<T> implements Deque<T> {
      * Add an item to the back of the deque.
      * @param item generic item of type T.
      */
+    @Override
     public void addLast(T item) {
         if (size == arraySize) {
             resize(size * 2);
@@ -107,6 +109,7 @@ public class ArrayDeque<T> implements Deque<T> {
     /**
      * @return true if deque is empty, false otherwise.
      */
+    @Override
     public boolean isEmpty() {
         return size == 0;
     }
@@ -114,6 +117,7 @@ public class ArrayDeque<T> implements Deque<T> {
     /**
      * @return the number of items in the deque.
      */
+    @Override
     public int size() {
         return this.size;
     }
@@ -122,6 +126,7 @@ public class ArrayDeque<T> implements Deque<T> {
      * Prints all the items in the deque from first to last,
      * each separated by a space character.
      */
+    @Override
     public void printDeque() {
         StringBuilder deque = new StringBuilder();
         int end = nextIndex(lastIndex());
@@ -136,6 +141,7 @@ public class ArrayDeque<T> implements Deque<T> {
      * Removes and returns the item at the front of the deque.
      * If no such item exists, returns null.
      */
+    @Override
     public T removeFirst() {
         if (arraySize > startSize && belowLoadFactor()) {
             resize(arraySize / 2);
@@ -154,6 +160,7 @@ public class ArrayDeque<T> implements Deque<T> {
      * Removes and returns the item at the back of the deque.
      * If no such item exists, returns null.
      */
+    @Override
     public T removeLast() {
         if (arraySize > startSize && belowLoadFactor()) {
             resize(arraySize / 2);
@@ -173,6 +180,7 @@ public class ArrayDeque<T> implements Deque<T> {
      * @param index the index of the deque, where 0 is the front, 1 is the next, and so forth.
      * @return the item of type T.
      */
+    @Override
     public T get(int index) {
         if (index >= size) {
             return null;

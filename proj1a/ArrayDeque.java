@@ -179,4 +179,25 @@ public class ArrayDeque<T> {
         }
         return items[arrayIndex(index)];
     }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || !(obj instanceof ArrayDeque)) {
+            return false;
+        }
+        ArrayDeque<T> other = (ArrayDeque<T>) obj;
+        if (this.size() != other.size()) {
+            return false;
+        }
+        for (int i = 0; i < size; i++) {
+            if (!(this.get(i).equals(other.get(i)))) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
