@@ -49,27 +49,14 @@ public class PercolationStats {
         for (int i = 0; i < trialTime; i++) {
             dev += Math.pow(threshold[i] - mean, 2);
         }
-        return Math.sqrt(dev / trialTime);
+        return Math.sqrt(dev / (trialTime - 1));
     }
 
     public double confidenceLow() {
-        return mean() - 1.96 * stddev() / gridNumber;
+        return mean() - 1.96 * stddev() / Math.sqrt(trialTime);
     }
 
     public double confidenceHigh() {
-        return mean() + 1.96 * stddev() / gridNumber;
-    }
-
-    public static void main(String[] args) {
-        if (args.length != 2) {
-            System.err.println("Usage: PercolationStats <N> <T>");
-        }
-        int n = Integer.parseInt(args[0]);
-        int t = Integer.parseInt(args[1]);
-        PercolationStats stats = new PercolationStats(n, t, new PercolationFactory());
-        System.out.println("Mean: " + stats.mean());
-        System.out.println("Standard deviation: " + stats.stddev());
-        System.out.println(String.format("95%% confidence interval: [%.5f, %.5f]",
-                stats.confidenceLow(), stats.confidenceHigh()));
+        return mean() + 1.96 * stddev() / Math.sqrt(trialTime);
     }
 }
