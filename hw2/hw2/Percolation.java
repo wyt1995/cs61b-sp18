@@ -5,6 +5,7 @@ import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 public class Percolation {
     private final boolean[][] grid;
     private final WeightedQuickUnionUF unionFind;
+    private final WeightedQuickUnionUF woButton;
     private final int top;
     private final int bottom;
     private final int gridSize;
@@ -31,10 +32,12 @@ public class Percolation {
 
         // establish a virtual union-find model
         this.unionFind = new WeightedQuickUnionUF(N * N + 2);
+        this.woButton = new WeightedQuickUnionUF(N * N + 1);
         this.top = 0;
         this.bottom = N * N + 1;
         for (int i = 0; i < N; i++) {
             unionFind.union(top, indexInUnion(0, i));
+            woButton.union(top, indexInUnion(0, i));
         }
         for (int i = 0; i < N; i++) {
             unionFind.union(bottom, indexInUnion(N - 1, i));
@@ -91,16 +94,17 @@ public class Percolation {
      * Connect the given site (row, col) with its open neighbours.
      */
     private void connectWithNeighbors(int row, int col) {
-        for (int r = row - 1; r <= row + 1; r ++) {
+        for (int r = row - 1; r <= row + 1; r++) {
             if (invalidRow(r)) {
                 continue;
             }
-            for (int c = col - 1; c <= col + 1; c ++) {
+            for (int c = col - 1; c <= col + 1; c++) {
                 if (invalidCol(c) || isDiagonal(row, col, r, c)) {
                     continue;
                 }
                 if (isOpen(r, c)) {
                     unionFind.union(indexInUnion(row, col), indexInUnion(r, c));
+                    woButton.union(indexInUnion(row, col), indexInUnion(r, c));
                 }
             }
         }
@@ -129,7 +133,7 @@ public class Percolation {
      * @return true if the site (row, col) is full, false otherwise.
      */
     public boolean isFull(int row, int col) {
-        return isOpen(row, col) && unionFind.connected(top, indexInUnion(row, col));
+        return isOpen(row, col) && woButton.connected(top, indexInUnion(row, col));
     }
 
     /**
