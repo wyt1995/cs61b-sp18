@@ -32,7 +32,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
         this.clear();
     }
 
-    /* Removes all of the mappings from this map. */
+    /* Removes all the mappings from this map. */
     @Override
     public void clear() {
         this.size = 0;
@@ -53,8 +53,8 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
         return Math.floorMod(key.hashCode(), numBuckets);
     }
 
-    /* Returns the value to which the specified key is mapped, or null if this
-     * map contains no mapping for the key.
+    /** Returns the value to which the specified key is mapped, or null if this
+     *  map contains no mapping for the key.
      */
     @Override
     public V get(K key) {
