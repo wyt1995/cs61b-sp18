@@ -115,6 +115,6 @@ public class Planet {
      * Draw the Planet’s image at its position.
      */
     public void draw() {
-        StdDraw.picture(xxPos, yyPos, "images/"+imgFileName);
+        StdDraw.picture(xxPos, yyPos, "images/" + imgFileName);
     }
 }
