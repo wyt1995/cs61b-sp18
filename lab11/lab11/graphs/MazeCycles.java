@@ -9,8 +9,8 @@ public class MazeCycles extends MazeExplorer {
     public int[] edgeTo;
     public boolean[] marked;
     */
-    private int start;
-    private Maze maze;
+    private final int start;
+    private final Maze maze;
     private boolean hasCycle = false;
 
     public MazeCycles(Maze m) {
