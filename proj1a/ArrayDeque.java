@@ -186,7 +186,7 @@ public class ArrayDeque<T> {
         if (this == obj) {
             return true;
         }
-        if (obj == null || !(obj instanceof ArrayDeque)) {
+        if (!(obj instanceof ArrayDeque)) {
             return false;
         }
         ArrayDeque<T> other = (ArrayDeque<T>) obj;
