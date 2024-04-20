@@ -22,10 +22,7 @@ public class LeapYear {
      * @return a boolean value.
      */
     public static boolean isLeapYear(int year) {
-        if (year % 400 == 0) {
-            return true;
-        }
-        return (year % 4 == 0) && (year % 100 != 0);
+        return (year % 400 == 0) || (year % 4 == 0 && year % 100 != 0);
     }
 
     /** Must be provided an integer as a command line argument ARGS. */
