@@ -34,7 +34,7 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
         this.clear();
     }
 
-    /* Removes all of the mappings from this map. */
+    /* Removes all the mappings from this map. */
     @Override
     public void clear() {
         root = null;
