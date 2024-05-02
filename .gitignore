@@ -28,6 +28,7 @@ Icon
 ._*
 .DocumentRevisions-V100
 .fseventsd
+.idea/
 .Spotlight-V100
 .TemporaryItems
 .Trashes
@@ -42,6 +43,8 @@ Thumbs.db
 ehthumbs.db
 ehthumbs_vista.db
 Desktop.ini
+library-sp18/
+out/
 $RECYCLE.BIN/
 *.cab
 *.msi
